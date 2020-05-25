@@ -39,7 +39,6 @@ public class Team<T extends Player>implements Comparable<Team>{
         this.teamNationality = this.getRoster().get(0).getNationality();
     }
 
-
     @Override
     public int compareTo(Team o) {
         this.getTeamNationality().compareTo(o.getTeamNationality());

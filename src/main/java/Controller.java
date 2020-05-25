@@ -1,8 +1,10 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import players.Player;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 
 public class Controller {
@@ -16,15 +18,20 @@ public class Controller {
     private ListView PlayersInAlphabet;
     @FXML
     private TextArea AllResults;
+    @FXML
+    private TextArea AvgResults;
+    public Printer printer;
 
     @FXML
     public void initialize(){
         this.games = new Games();
         this.teams = new TournamentTeams();
-
-
+        this.printer = (players) -> {
+            return games.printAllPlayers(players);
+        };
         showAllTeams();
     }
+
     public void performTournament(){
         this.teams = new TournamentTeams();
         this.match = new Match();
@@ -46,15 +53,15 @@ public class Controller {
         }//for j
         TeamsInAlphabet.getItems().setAll(games.sortByWins(teams, new SortTeamsByWins()));
         TeamsInAlphabet.getItems().add("All");
-        PlayersInAlphabet.getItems().setAll(games.printAllPlayers(match.getAllPlayers()));
+        PlayersInAlphabet.getItems().setAll(printer.printAll(match.getAllPlayers()));
         TeamsInAlphabet.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }//performMatch
 
     @FXML
     public void handleClickListView(){
        String selectedTeam = (String)TeamsInAlphabet.getSelectionModel().getSelectedItem();
-        PlayersInAlphabet.getItems().setAll(games.printCertainPlayers(match.getAllPlayers(), selectedTeam));
-        games.printMatches(getM(), selectedTeam, AllResults);
+        PlayersInAlphabet.getItems().setAll(printer.printCertain(match.getAllPlayers(), selectedTeam, games));
+        Printer.print(games, getM(), selectedTeam, AvgResults);
     }
 
     @FXML

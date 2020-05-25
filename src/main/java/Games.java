@@ -54,13 +54,13 @@ public class Games {
 
     public void printMatches(ArrayList<String> printMatches, String nation, TextArea AllMatches){
         AllMatches.clear();
-        for(String matchString : printMatches){
+        printMatches.forEach(matchString -> {
             if(matchString.contains(nation)){
                 AllMatches.appendText(matchString);
             }else if(nation.equals("All")){
                 AllMatches.appendText(matchString);
             }
-        }
+        });
         //return certainMatches;
     }
 }

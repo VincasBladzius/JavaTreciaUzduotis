@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
 <BorderPane fx:controller="Controller"
             xmlns:fx="http://javafx.com/fxml">
      <padding>
@@ -29,9 +30,12 @@
           </ListView>
      </left>
      <center>
-          <TextArea fx:id="AllResults">
-
-          </TextArea>
+          <VBox>
+               <TextArea fx:id="AllResults" prefHeight="400">
+               </TextArea>
+               <TextArea fx:id="AvgResults">
+               </TextArea>
+          </VBox>
      </center>
      <right>
           <ListView fx:id="PlayersInAlphabet">
