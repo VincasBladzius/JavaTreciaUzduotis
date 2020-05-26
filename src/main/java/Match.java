@@ -61,6 +61,13 @@ public class Match{
         HostName = hostName;
     }
 
+    public String getHostName() {
+        return HostName;
+    }
+
+    public String getVisitorName() {
+        return VisitorName;
+    }
 
     public void setVisitorName(String visitorName) {
         VisitorName = visitorName;

@@ -13,6 +13,13 @@ public class Player<T> implements Comparable<Player>{
        setLastName();
     }//ctor
 
+    public Player(String firstName, String lastName, String nationality, int matchPoints) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nationality = nationality;
+        this.matchPoints = matchPoints;
+    }
+
     public String getFirstName() {
         return firstName;
     }
