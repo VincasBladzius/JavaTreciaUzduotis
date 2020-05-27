@@ -27,7 +27,6 @@ public class Games {
         return t;
     }//sortByAlphabet
 
-
     public ArrayList<String> printAllPlayers(HashSet<Player> allPlayersSet){
         ArrayList<Player> allPlayers = new ArrayList<>(allPlayersSet);
         ArrayList<String> allPlayersToPrint = new ArrayList<>();
